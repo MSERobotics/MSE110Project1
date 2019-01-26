@@ -14,7 +14,7 @@ task main()
     nMotorEncoder[left] = 0;
     nMotorEncoder[right] = 0;
     getColorRGB(color,colorR,colorG,colorB);
-    //first part, before detecting, object
+
         while(getUSDistance(ultra) > 10){
         getColorRGB(color,colorR,colorG,colorB);
  
@@ -25,7 +25,6 @@ task main()
             motor[right] = -20;
             getColorRGB(color,colorR,colorG,colorB);
         }
- 
         if(colorR < 14)
         {
             displayCenteredBigTextLine(5,"%d",colorG);
@@ -33,7 +32,6 @@ task main()
             motor[right] = 10;
             getColorRGB(color,colorR,colorG,colorB);
         }
- 
         if(colorR > 13 && colorR < 20)
         {
             displayCenteredBigTextLine(5,"%d",colorG);
@@ -54,20 +52,22 @@ task main()
         displayCenteredBigTextLine(5,"%d",colorR);
         displayCenteredBigTextLine(5,"%d",colorG);
         displayCenteredBigTextLine(5,"%d",colorB);
-        if(colorG < 19)
+        
+        if((colorG - colorB) > 10)
         {
-        displayCenteredBigTextLine(5, "%s", "BLUE");
-        sleep(5000);
-        motor[left] = 5;
-        motor[right] = 5;
-        wait1Msec(1000);
-        turnRight(400, degrees, 30);
-        turnLeft(400, degrees, 30);
-      	}
-       	else
-        {
-            displayCenteredBigTextLine(5, "%s", "GREEN");
+          	displayCenteredBigTextLine(5, "%s", "GREEN");
             turnRight(180, degrees, 20);
+      	}
+ 
+       	else
+        {    
+      	  	displayCenteredBigTextLine(5, "%s", "BLUE");
+      		  sleep(5000);
+      		  motor[left] = 5;
+     			  motor[right] = 5;
+     		   	wait1Msec(1000);
+        		turnRight(400, degrees, 30);
+        		turnLeft(400, degrees, 30);
         }
 		}
 }
