@@ -10,66 +10,66 @@ task main()
 {
     while(1)
     {
-    nMotorEncoder[left] = 0;
-    nMotorEncoder[right] = 0;
-    getColorRGB(color,colorR,colorG,colorB);
+   	 nMotorEncoder[left] = 0;
+   	 nMotorEncoder[right] = 0;
+   	 getColorRGB(color,colorR,colorG,colorB);
 
-        while(getUSDistance(ultra) > 10){
-        getColorRGB(color,colorR,colorG,colorB);
- 
-        if(colorR > 19)
-        {
-            displayCenteredBigTextLine(5,"%d",colorG);
-            motor[left] = 10;
-            motor[right] = -20;
-            getColorRGB(color,colorR,colorG,colorB);
-        }
-        if(colorR < 14)
-        {
-            motor[left] = -20;
-            motor[right] = 10;
-            getColorRGB(color,colorR,colorG,colorB);
-        }
-        if(colorR > 13 && colorR < 20)
-        {
-            motor[left] = 25;
-            motor[right] = 25;
-            getColorRGB(color,colorR,colorG,colorB);
-        }
-    }
+        while(getUSDistance(ultra) > 10)
+	{
+        	getColorRGB(color,colorR,colorG,colorB);
+      		if(colorR > 19)
+     		{
+            		displayCenteredBigTextLine(5,"%d",colorG);
+            		motor[left] = 10;
+            		motor[right] = -20;
+            		getColorRGB(color,colorR,colorG,colorB);
+        	}
+        	if(colorR < 14)
+        	{
+            		motor[left] = -20;
+            		motor[right] = 10;
+            		getColorRGB(color,colorR,colorG,colorB);
+        	}
+        	if(colorR > 13 && colorR < 20)
+        	{
+            		motor[left] = 25;
+            		motor[right] = 25;
+            		getColorRGB(color,colorR,colorG,colorB);
+        	}
+    	}
     
-    if(getUSDistance(ultra) < 10)
+    		if(getUSDistance(ultra) < 10)
 		{
-        motor[left] = 0;
-        motor[right] = 0;
-        playSound(soundLowBuzz);
-        sleep(2000);
-        getColorRGB(color,colorR,colorG,colorB);
-        displayCenteredBigTextLine(5,"%d",colorR);
-        displayCenteredBigTextLine(5,"%d",colorG);
-        displayCenteredBigTextLine(5,"%d",colorB);
+        		motor[left] = 0;
+        		motor[right] = 0;
+        		playSound(soundLowBuzz);
+        		sleep(2000);
+        		getColorRGB(color,colorR,colorG,colorB);
+        		displayCenteredBigTextLine(5,"%d",colorR);
+        		displayCenteredBigTextLine(5,"%d",colorG);
+        		displayCenteredBigTextLine(5,"%d",colorB);
         
-        if((colorG - colorB) > 10)
-        {
-        		motor[left] = 30;
-        		motor[right] = 30;
-        		wait1Msec(2000);
-          	displayCenteredBigTextLine(5, "%s", "GREEN");
-            turnLeft(960, degrees, 20);   
-      	}
+        		if((colorG - colorB) > 10)
+        		{
+        			motor[left] = 30;
+        			motor[right] = 30;
+        			wait1Msec(2000);
+          			displayCenteredBigTextLine(5, "%s", "GREEN");
+            			turnLeft(960, degrees, 20);   
+      			}
 
-       	else
-        {    
-      	  	displayCenteredBigTextLine(5, "%s", "BLUE");
-      		  motor[left] = 15;
-     			  motor[right] = 15;
-     		   	wait1Msec(2000);
-        		turnRight(480, degrees, 15);
-        		wait1Msec(2000);
-        		motor[left] = 30;
-        		motor[right] = 30;
-        		wait1Msec(2000);
-        }
+       			else
+        		{    
+      	  			displayCenteredBigTextLine(5, "%s", "BLUE");
+      		  		motor[left] = 15;
+     				motor[right] = 15;
+     		   		wait1Msec(2000);
+        			turnRight(480, degrees, 15);
+        			wait1Msec(2000);
+        			motor[left] = 30;
+        			motor[right] = 30;
+        			wait1Msec(2000);
+        		}
 		}
-}
+	}
 }
