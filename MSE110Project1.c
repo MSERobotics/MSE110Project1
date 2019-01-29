@@ -51,24 +51,22 @@ task main()
         
         		if((colorG - colorB) > 10)
         		{
-        			motor[left] = 30;
-        			motor[right] = 30;
-        			wait1Msec(2000);
-          			displayCenteredBigTextLine(5, "%s", "GREEN");
-            			turnLeft(960, degrees, 20);   
+        			motor[left] = -10;
+        			motor[right] = -10;
+        			wait1Msec(500);
+          		displayCenteredBigTextLine(5, "%s", "GREEN");
+            	turnLeft(700, degrees, 20);   
       			}
 
        			else
         		{    
-      	  			displayCenteredBigTextLine(5, "%s", "BLUE");
-      		  		motor[left] = 15;
-     				motor[right] = 15;
-     		   		wait1Msec(2000);
-        			turnRight(480, degrees, 15);
-        			wait1Msec(2000);
-        			motor[left] = 30;
-        			motor[right] = 30;
-        			wait1Msec(2000);
+      	  		displayCenteredBigTextLine(5, "%s", "BLUE");
+      		  	motor[left] = 15;
+     					motor[right] = 15;
+     		   		wait1Msec(1000);
+        			turnRight(700, degrees, 25);
+        			turnLeft(600, degrees,25);
+	
         		}
 		}
 	}
